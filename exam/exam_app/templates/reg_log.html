@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register login</title>
+</head>
+<body>
+
+    <h1>Ideas Dashboard</h1>
+    <h2>Register</h2>
+    <form action="register" method="POST">
+        {% csrf_token %}
+
+        <label for="firstname">firstname :</label>
+        <input type="text" name="firstname">
+
+        {% if errors.firsnameerror   %}
+            <p>{{ errors.firsnameerror  }}</p>
+        {% endif  %}
+
+        <br>
+        <label for="lastname">lastname :</label>
+        <input type="text" name="lastname">
+
+        {% if errors.lastnameerror   %}
+            <p>{{ errors.lastnameerror  }}</p>
+        {% endif  %}
+
+        <br>
+        <label for="email">email :</label>
+        <input type="text" name="email">
+
+        {% if errors.emailerror   %}
+            <p>{{ errors.emailerror  }}</p>
+        {% endif  %}
+
+        <br>
+        <label for="password">password :</label>
+        <input type="password" name="password">
+
+        {% if errors.passworderror   %}
+            <p>{{ errors.passworderror  }}</p>
+        {% endif  %}
+
+        <br>
+        <label for="confirm_pw">confirm_pw :</label>
+        <input type="password" name="confirm_pw">
+
+        {% if errors.confirm_pwerror   %}
+            <p>{{ errors.confirm_pwerror  }}</p>
+        {% endif  %}
+
+        <br>
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Login</h2>
+
+        {% if errors.loginerror   %}
+            <p>{{ errors.loginerror  }}</p>
+        {% endif  %}
+
+    <form action="login" method="POST">
+        {% csrf_token %}
+
+        <label for="email">email :</label>
+        <input type="text" name="email">
+
+        {% if errors.loginemailerror   %}
+            <p>{{ errors.loginemailerror  }}</p>
+        {% endif  %}
+
+        <br>
+        <label for="password">password :</label>
+        <input type="password" name="password">
+
+        {% if errors.loginpassworderror   %}
+            <p>{{ errors.loginpassworderror  }}</p>
+        {% endif  %}
+
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    
+</body>
+</html>

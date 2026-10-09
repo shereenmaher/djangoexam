@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Idea</title>
+</head>
+<body>
+    <a href="/ideas">dashboard</a>
+    <a href="/logout">logout</a>
+
+    <h1>Welcome {{ user.firstname }} {{  user.lastname  }}</h1>
+   
+    <p>{{ idea.user.firstname}} ideas are :<br></p>
+    {% for idea in user.ideas.all %}
+        <ul>
+            <li>
+                {{ idea.idea   }}        
+            </li>
+            {% empty %}
+                <li>No ideas yet</li>
+            {% endfor %}
+        </ul>
+    {  %endfor  %}
+
+    
+    
+</body>
+</html>

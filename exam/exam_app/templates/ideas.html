@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas</title>
+</head>
+<body>
+    <h1>Welcome {{ user.firstname }}</h1>
+    <a href="/logout">Logout</a>
+
+    <form action="/create_idea" method="POST">
+
+        {% csrf_token %}
+        <input type="text" name="idea">
+
+        {%  if errors.ideaerror %}
+            <p>{{ errors.ideaerror }}</p>
+        {% endif %}
+
+        <a href="/create_idea"><button>Add your idea</button></a>
+
+    </form>
+
+    {% for idea in ideas %}
+        <a href="/view_idea/{{ idea.id }}">{{ idea.user.firstname }} says</a>
+        
+        <div>
+            {{ idea.idea }}
+        </div>
+        
+        {% if idea.user.id == user.id %}
+            <a href="/delete_idea/{{ idea.id }}">Delete</a>
+            <a href="/edit_idea/{{ idea.id }}">Edit</a>
+            <br>
+        
+        {% endif  %}
+
+    {% endfor %}
+    
+    
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit idea</title>
+</head>
+<body>
+    <h1>Edit My Idea</h1>
+    <a href="/ideas">cancel</a>
+    <form action="/edit_idea/{{ idea.id }}" method="POST">
+
+        {% csrf_token %}
+        <input type="text" name="idea">
+
+        {%  if errors.ideaerror %}
+            <p>{{ errors.ideaerror }}</p>
+        {% endif %}
+
+        <button type="submit">change</button>
+
+    </form>
+</body>
+</html>
